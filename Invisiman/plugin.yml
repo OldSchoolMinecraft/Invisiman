@@ -1,0 +1,9 @@
+name: Invisiman
+version: 0
+author: moderator_man
+main: com.oldschoolminecraft.vanish.Invisiman
+commands:
+    vanish:
+        description: Toggle vanish status.
+        permission: invisiman.vanish
+        default: op
