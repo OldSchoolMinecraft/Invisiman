@@ -1,6 +1,8 @@
 package com.oldschoolminecraft.vanish;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -15,6 +17,9 @@ public class PlayerHandler extends PlayerListener
     {
         if (Invisiman.instance.statusMap.containsKey(event.getPlayer()))
             Invisiman.instance.setVanish(event.getPlayer(), Invisiman.instance.statusMap.get(event.getPlayer()));
+        if (event.getPlayer().hasPermission("invisiman.see") || event.getPlayer().isOp())
+            for (Player player : Bukkit.getServer().getOnlinePlayers())
+                event.getPlayer().showPlayer(player);
     }
 
     @EventHandler
