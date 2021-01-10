@@ -56,7 +56,7 @@ public class Invisiman extends JavaPlugin
     {
         for (Player ply : getServer().getOnlinePlayers())
         {
-            if (vanished && !ply.hasPermission("invisiman.see"))
+            if (vanished && !ply.hasPermission("invisiman.see") && !ply.isOp())
                 ply.hidePlayer(player);
             else
                 ply.showPlayer(player);

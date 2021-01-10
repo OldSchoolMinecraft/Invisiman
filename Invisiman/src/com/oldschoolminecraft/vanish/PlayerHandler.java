@@ -17,9 +17,10 @@ public class PlayerHandler extends PlayerListener
     {
         if (Invisiman.instance.statusMap.containsKey(event.getPlayer()))
             Invisiman.instance.setVanish(event.getPlayer(), Invisiman.instance.statusMap.get(event.getPlayer()));
-        if (event.getPlayer().hasPermission("invisiman.see") || event.getPlayer().isOp())
-            for (Player player : Bukkit.getServer().getOnlinePlayers())
-                event.getPlayer().showPlayer(player);
+        
+        for (Player player : Bukkit.getServer().getOnlinePlayers())
+            if (Invisiman.instance.statusMap.containsKey(player) && Invisiman.instance.statusMap.get(player) && !event.getPlayer().hasPermission("invisiman.see") && !event.getPlayer().isOp())
+                event.getPlayer().hidePlayer(player);
     }
 
     @EventHandler
